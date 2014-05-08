@@ -60,6 +60,31 @@ body {
   left: 310px;
   top: 55px;
 }
+#board1 {
+  position: absolute;
+  left: 410px;
+  top: 355px;
+}
+#board2 {
+  position: absolute;
+  left: 510px;
+  top: 355px;
+}
+#board3 {
+  position: absolute;
+  left:610px;
+  top: 355px;
+}
+#board4 {
+  position: absolute;
+  left:710px;
+  top: 355px;
+}
+#board5 {
+  position: absolute;
+  left:810px;
+  top: 355px;
+}
 .boxed {
   color: white;
   border: 3px solid white;

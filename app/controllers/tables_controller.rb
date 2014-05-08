@@ -23,11 +23,29 @@ class TablesController < ApplicationController
 
   def update
     @table = Table.find(params[:id])
-    @table.players.each do |player|
-      until player.cards.count == 2 do
-        player.cards << @table.dealer.give_card
+
+    if params[:flop]
+      3.times { @table.cards << @table.dealer.give_card }
+    end
+    if params[:turn]
+      @table.cards << @table.dealer.give_card
+    end
+    if params[:river]
+      @table.cards << @table.dealer.give_card
+    end
+
+    if params[:preflop]
+      @table.players.each do |player|
+        until player.cards.count == 2 do
+          player.cards << @table.dealer.give_card
+        end
       end
     end
-    redirect_to "/tables/#{@table.id}"
+
+    if params[:new_hand]
+      @table.players.each { |player| player.cards = [] }
+      @table.cards = []
+    end
+    redirect_to :back
   end
 end
