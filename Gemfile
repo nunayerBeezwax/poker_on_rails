@@ -9,6 +9,7 @@ gem 'jbuilder'
 gem 'bootstrap'
 gem 'turbolinks'
 gem 'faker'
+gem 'paperclip'
 
 group :development do
   gem 'better_errors'

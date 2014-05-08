@@ -1,4 +1,9 @@
-<% @table.players.each do |player| %>
-  <p><%= player.name %></p>
-  <p><%= player.chips %></p>
+
+<div class="table">
+<% @table.players.each_with_index do |player, index| %>
+  <div class="boxed" id="player<%=index+1%>">
+    <p><%= player.name %></p>
+    <p><%= player.chips %></p>
+  </div>
 <% end %>
+</div>
