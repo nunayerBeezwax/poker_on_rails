@@ -1,0 +1,3 @@
+class DealersController < ApplicationController
+
+end

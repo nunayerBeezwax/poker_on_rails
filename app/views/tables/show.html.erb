@@ -1,9 +1,18 @@
 
 <div class="table">
-<% @table.players.each_with_index do |player, index| %>
-  <div class="boxed" id="player<%=index+1%>">
-    <p><%= player.name %></p>
-    <p><%= player.chips %></p>
-  </div>
-<% end %>
+  <% @table.players.each_with_index do |player, index| %>
+    <div class="boxed" id="player<%=index+1%>">
+      <p><%= player.name %></p>
+      <p><%= player.chips %></p>
+      <% if player.cards.count > 0 %>
+        <% player.cards.each do |card| %>
+          <%= image_tag card.pic %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
+<button><%= link_to "Deal cards", table_path(@table.id), method: :patch %></button>
+
+
