@@ -1,9 +1,10 @@
 
 <div class="table">
-  <% @table.players.each_with_index do |player, index| %>
+  <% @table.players.sort.each_with_index do |player, index| %>
     <div class="boxed" id="player<%=index+1%>">
       <p><%= player.name %></p>
       <p><%= player.chips %></p>
+      <h1><%= player.seat %></h1>
       <% if player.cards.count > 0 %>
         <% player.cards.each do |card| %>
           <%= image_tag card.pic, :size => "50x70" %>
@@ -19,7 +20,7 @@
     <% if @table.cards.count == 3 %>
       <% @table.cards.each_with_index do |card, index| %>
         <div id="board<%=index+1%>">
-          <%= image_tag card.pic %>
+          <%= image_tag card.pic%>
         </div>
       <% end %>
     <% elsif @table.cards.count == 4 %>
@@ -37,13 +38,20 @@
     <% end %>
   </div>
 
-  <div id="pot">
+  <div id="state">
+    <p> Bet: <%= @table.bet %></p>
     <p> Pot: <%= @table.pot %> </p>
   </div>
+
+  <div id="blinds">
+    <p> Big Blind: <%= @table.bb %></p>
+    <p> Small Blind: <%= @table.sb %></p>
+  </div>
+
 </div>
 
 
-<%= button_to "Deal cards", table_path(@table.id, preflop: :true), method: :patch %>
+<%= button_to "Start Game", table_path(@table.id, preflop: :true), method: :patch %>
 <%= button_to "Flop", table_path(@table.id, flop: :true), method: :patch %>
 <%= button_to "Turn", table_path(@table.id, turn: :true), method: :patch %>
 <%= button_to "River", table_path(@table.id, river: :true), method: :patch %>

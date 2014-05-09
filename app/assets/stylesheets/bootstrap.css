@@ -16,11 +16,18 @@ body {
   left: 50px;
 }
 
-#pot {
+#state {
   position: absolute;
   font-weight: bold;
-  top: 55%;
+  top: 50%;
   left: 20%;
+}
+
+#blinds {
+  position: absolute;
+  font-size: 12px;
+  top: 0%;
+  right: 0%;
 }
 
 #player1 {
@@ -100,7 +107,7 @@ body {
   width: 12%;
   height: 10%;
   text-align: top;
-  font-size: 100%;
+  font-size: 70%;
   padding-bottom:1%;
   padding-top:-10%;
   vertical-align: center;

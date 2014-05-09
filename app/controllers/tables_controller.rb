@@ -3,6 +3,8 @@ class TablesController < ApplicationController
   def create
     @table = Table.new
     @table.button = rand(1..9)
+    @table.bb = 50
+    @table.sb = 25
     @table.save
     9.times { |i| player = Player.new({:name => Faker::Name.name, :chips => 1000, :table_id => @table.id, :seat => i+1 })
     @table.players << player }
@@ -24,6 +26,20 @@ class TablesController < ApplicationController
 
   def update
     @table = Table.find(params[:id])
+    @dealer = @table.dealer
+    @button = @table.button
+    @pot = @table.pot
+
+    if params[:preflop]
+      @table.blinds_please
+      @table.bet = @table.bb
+      @table.save
+      @table.players.each do |player|
+        until player.cards.count == 2 do
+          player.cards << @table.dealer.give_card
+        end
+      end
+    end
 
     if params[:flop]
       3.times { @table.cards << @table.dealer.give_card }
@@ -35,18 +51,11 @@ class TablesController < ApplicationController
       @table.cards << @table.dealer.give_card
     end
 
-    if params[:preflop]
-      @table.players.each do |player|
-        until player.cards.count == 2 do
-          player.cards << @table.dealer.give_card
-        end
-      end
-    end
-
     if params[:new_hand]
       @table.players.each { |player| player.cards = [] }
       @table.cards = []
       @table.pot = 0
+      @table.bet = 0
       @table.dealer.deck.cards.each { |card| card.played = false }
       if @table.button + 1 < 10 
         @table.button += 1 
@@ -54,8 +63,9 @@ class TablesController < ApplicationController
         @table.button = 1
       end
       @table.save
-      
     end
+
+
     redirect_to :back
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509220557) do
+ActiveRecord::Schema.define(version: 20140509233530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20140509220557) do
     t.integer "card_id"
     t.integer "pot"
     t.integer "button"
+    t.integer "bb"
+    t.integer "sb"
+    t.integer "action"
+    t.integer "bet"
   end
 
 end
