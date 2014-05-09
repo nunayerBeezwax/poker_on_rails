@@ -4,6 +4,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.belongs_to :table
       t.string :name
       t.integer :chips
+      t.integer :seat
     end
   end
 end

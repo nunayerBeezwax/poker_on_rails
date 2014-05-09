@@ -2,8 +2,9 @@ class TablesController < ApplicationController
 
   def create
     @table = Table.new
+    @table.button = rand(1..9)
     @table.save
-    9.times { player = Player.new({:name => Faker::Name.name, :chips => 1000, :table_id => @table.id})
+    9.times { |i| player = Player.new({:name => Faker::Name.name, :chips => 1000, :table_id => @table.id, :seat => i+1 })
     @table.players << player }
     @table.create_dealer!
     @table.dealer.create_deck!
@@ -45,6 +46,15 @@ class TablesController < ApplicationController
     if params[:new_hand]
       @table.players.each { |player| player.cards = [] }
       @table.cards = []
+      @table.pot = 0
+      @table.dealer.deck.cards.each { |card| card.played = false }
+      if @table.button + 1 < 10 
+        @table.button += 1 
+      else
+        @table.button = 1
+      end
+      @table.save
+      
     end
     redirect_to :back
   end

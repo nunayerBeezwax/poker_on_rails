@@ -3,8 +3,9 @@ class CreateCards < ActiveRecord::Migration
     create_table :cards do |t|
       t.integer :rank
       t.string :suit
-      t.attachment :pic
+      t.string :pic
       t.belongs_to :deck
+      t.boolean :played
     end
   end
 end

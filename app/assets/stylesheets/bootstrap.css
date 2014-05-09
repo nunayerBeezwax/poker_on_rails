@@ -1,6 +1,7 @@
 html body {
   background: url('table.png');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 body {
@@ -8,92 +9,100 @@ body {
 }
 
 .table {
-  position: fixed;
-  width: 1500px;
-  height: 850px;
-  top: 120px;
-  left: 150px;
+  position: absolute;
+  width: 88%;
+  height: 75%;
+  top: 40px;
+  left: 50px;
+}
+
+#pot {
+  position: absolute;
+  font-weight: bold;
+  top: 55%;
+  left: 20%;
 }
 
 #player1 {
   position: absolute;
-  left: 630px;
-  top: 000px;
+  left: 45%;
+  top: 0%;
 }
 #player2 {
   position: absolute;
-  left: 950px;
-  top: 55px;
+  right:19%;
+  top: 10%;
 }
 #player3 {
   position: absolute;
-  left: 1230px;
-  top: 160px;
+  right: 0%;
+  top: 35%;
 }
 #player4 {
   position: absolute;
-  left: 1230px;
-  top: 420px;
+  right: 10%;
+  bottom: 20%;
 }
 #player5 {
   position: absolute;
-  left: 950px;
-  top: 620px;
+  right: 33%;
+  bottom: 5%;
 }
 #player6 {
   position: absolute;
-  left: 630px;
-  top: 690px;
+  left: 33%;
+  bottom: 5%;
 }
 #player7 {
   position: absolute;
-  left: 310px;
-  top:645px;
+  left: 10%;
+  bottom:20%;
 }
 #player8 {
   position: absolute;
-  left: 20px;
-  top: 355px;
+  left: 0%;
+  top: 35%;
 }
 #player9 {
   position: absolute;
-  left: 310px;
-  top: 55px;
+  left: 19%;
+  top: 10%;
 }
 #board1 {
   position: absolute;
-  left: 410px;
-  top: 355px;
+  left: 35%;
+  top: 45%;
 }
 #board2 {
   position: absolute;
-  left: 510px;
-  top: 355px;
+  left: 45%;
+  top: 45%;
 }
 #board3 {
   position: absolute;
-  left:610px;
-  top: 355px;
+  left:55%;
+  top: 45%;
 }
 #board4 {
   position: absolute;
-  left:710px;
-  top: 355px;
+  left:65%;
+  top: 45%;
 }
 #board5 {
   position: absolute;
-  left:810px;
-  top: 355px;
+  left:75%;
+  top: 45%;
 }
 .boxed {
   color: white;
-  border: 3px solid white;
-  width: 180px;
-  height: 75px;
   text-align: center;
-  font-size: 17px;
-  font-style:oblique;
-  padding-bottom:15px;
+  border: 3px solid white;
+  width: 12%;
+  height: 10%;
+  text-align: top;
+  font-size: 100%;
+  padding-bottom:1%;
+  padding-top:-10%;
   vertical-align: center;
   background:
     radial-gradient(black 15%, transparent 16%) 0 0,

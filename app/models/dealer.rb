@@ -3,6 +3,9 @@ class Dealer < ActiveRecord::Base
   has_one :deck
 
   def give_card
-    self.deck.cards.order("RANDOM()").first
+  	cards = self.deck.cards.find_all_by_played(false)
+  	card = cards.sample
+  	card.played = true
+  	card
   end
 end
