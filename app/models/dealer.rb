@@ -13,7 +13,7 @@ class Dealer < ActiveRecord::Base
   	@table = Table.find(self.table_id)
   	hands = {}
   	@table.players.each do |player|
-  		if player.cards
+  		if player.cards.count > 0 
   			hand = player.cards + @table.cards
   			hands.store("#{player.seat}", "#{Evaluator.make_best(hand)}")
   			player.hand = Evaluator.make_best(hand)

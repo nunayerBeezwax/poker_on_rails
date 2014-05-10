@@ -6,7 +6,7 @@ class CreateTable < ActiveRecord::Migration
     	t.integer :bb
     	t.integer :sb
     	t.integer :bet
-    	t.integer :action
+    	t.integer :action_on_seat
     end
   end
 end

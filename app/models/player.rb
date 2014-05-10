@@ -13,4 +13,8 @@ class Player < ActiveRecord::Base
   	self.save
   	@table.save
   end
+
+  def fold
+    self.cards = []
+  end
 end

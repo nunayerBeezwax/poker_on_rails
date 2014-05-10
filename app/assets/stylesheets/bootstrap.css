@@ -133,6 +133,39 @@ body {
   -webkit-border-bottom-left-radius: 10px;
 }
 
-#winner {
+.boxed.action {
   box-shadow: 0px 0px 20px white;
+}
+
+.button_game{
+border:px solid #FFFFFF; -webkit-border-radius: px; -moz-border-radius: px;border-radius: px;width:px;font-size:px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block; color: #FFFFFF;
+ background-color: #45484d; background-image: -webkit-gradient(linear, left top, left bottom, from(#45484d), to(#000000));
+ background-image: -webkit-linear-gradient(top, #45484d, #000000);
+ background-image: -moz-linear-gradient(top, #45484d, #000000);
+ background-image: -ms-linear-gradient(top, #45484d, #000000);
+ background-image: -o-linear-gradient(top, #45484d, #000000);
+ background-image: linear-gradient(to bottom, #45484d, #000000);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#45484d, endColorstr=#000000);
+ font-weight: bold;
+ font-family: Rockwell, Georgia, "Times New Roman", Times, serif;
+ text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+ color: bright grey;
+ font-size: 12px;
+ position: relative-bottom;
+ right:0;
+ bottom:0;
+ display:inline-block;
+ margin-right:5px;
+ float:right;
+ width:10%;
+}
+
+.button_game:hover{
+ border:px solid #FFFFFF;
+ background-color: #2d2f32; background-image: -webkit-gradient(linear, left top, left bottom, from(#2d2f32), to(#1a1a1a));
+ background-image: -webkit-linear-gradient(top, #2d2f32, #1a1a1a);
+ background-image: -moz-linear-gradient(top, #2d2f32, #1a1a1a);
+ background-image: -ms-linear-gradient(top, #2d2f32, #1a1a1a);
+ background-image: -o-linear-gradient(top, #2d2f32, #1a1a1a);
+ background-image: linear-gradient(to bottom, #2d2f32, #1a1a1a);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#2d2f32, endColorstr=#1a1a1a);
+ font-weight: bold;
 }

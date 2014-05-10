@@ -33,7 +33,7 @@ class TablesController < ApplicationController
     if params[:preflop]
       @table.blinds_please
       @table.bet = @table.bb
-      @table.action = @table.players.find_by_seat((@table.button+3).to_s.split(//).map(&:to_i).inject(:+))
+      @table.action_on_seat = (@table.button+3).to_s.split(//).map(&:to_i).inject(:+)
       @table.save
       @table.players.each do |player|
         until player.cards.count == 2 do
@@ -62,9 +62,13 @@ class TablesController < ApplicationController
         player.hand = '' 
         player.save
       end
+
       @table.cards = []
       @table.pot = 0
       @table.bet = 0
+      @table.button = (@table.button+1).to_s.split(//).map(&:to_i).inject(:+)
+      @table.action_on_seat = 0
+
       @table.dealer.create_deck!
       rank = %w{ 2 3 4 5 6 7 8 9 10 11 12 13 14 }
       suit = %w{ C S H D }
@@ -73,15 +77,8 @@ class TablesController < ApplicationController
           @table.dealer.deck.cards << Card.new({:suit => suit, :rank => rank, :pic => "#{rank}#{suit}.png"})
         end
       end
-      if @table.button + 1 < 10 
-        @table.button += 1 
-      else
-        @table.button = 1
-      end
       @table.save
     end
-
-
     redirect_to :back
   end
 end
