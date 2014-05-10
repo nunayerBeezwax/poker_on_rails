@@ -34,14 +34,17 @@
   </div>
 
   <div id="blinds">
-    <p> Big Blind: <%= @table.bb %></p>
-    <p> Small Blind: <%= @table.sb %></p>
+    Big Blind: <%= @table.bb %><br>
+    Small Blind: <%= @table.sb %>
   </div>
 
 </div>
 
   <%= render "game_buttons" %>
   <% if @table.action_on_seat && @table.action_on_seat > 0 %>
-    <%= render "play_buttons" %>
+    <%= render "fold" %>
+    <%= render "call" %>
+    <%= render "check" %>
+    <%= render "raise" %>
   <% end %>
 

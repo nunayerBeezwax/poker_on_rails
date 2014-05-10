@@ -43,12 +43,15 @@ class TablesController < ApplicationController
     end
 
     if params[:flop]
+      @table.action_on_seat = (@table.button+1).to_s.split(//).map(&:to_i).inject(:+)
       3.times { @table.cards << @table.dealer.give_card }
     end
     if params[:turn]
+      @table.action_on_seat = (@table.button+1).to_s.split(//).map(&:to_i).inject(:+)
       @table.cards << @table.dealer.give_card
     end
     if params[:river]
+      @table.action_on_seat = (@table.button+1).to_s.split(//).map(&:to_i).inject(:+)
       @table.cards << @table.dealer.give_card
     end
 
