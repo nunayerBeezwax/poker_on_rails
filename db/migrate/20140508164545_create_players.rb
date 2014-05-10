@@ -5,6 +5,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :name
       t.integer :chips
       t.integer :seat
+      t.string :hand
     end
   end
 end

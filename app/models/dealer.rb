@@ -8,4 +8,17 @@ class Dealer < ActiveRecord::Base
   	card.played = true
   	card
   end
+
+  def showdown
+  	@table = Table.find(self.table_id)
+  	hands = {}
+  	@table.players.each do |player|
+  		if player.cards
+  			hand = player.cards + @table.cards
+  			hands.store("#{player.seat}", "#{Evaluator.make_best(hand)}")
+  			player.hand = Evaluator.make_best(hand)
+  			player.save
+  		end
+  	end
+  end
 end

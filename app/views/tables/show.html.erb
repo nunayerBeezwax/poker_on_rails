@@ -3,9 +3,13 @@
   <% @table.players.sort.each_with_index do |player, index| %>
     <div class="boxed" id="player<%=index+1%>">
       <%= player.name %>
-      <p><%= player.chips %>
+      <% if player.hand != ''%>
+        <p><%= player.hand %></p>
+      <% else %>
+        <p><%= player.chips %></p>
+      <% end %>
       <div id="button"><% if player.seat == @table.button %>
-        <%= image_tag "button.jpg", :size => "25x25" %>
+        <%= image_tag "button.jpg", :size => "30x30" %>
       <% end %></div></p>
       <% if player.cards.count > 0 %>
         <% player.cards.each do |card| %>
@@ -15,31 +19,11 @@
     </div>
   <% end %>
 
-  <div class="board">
-    <% if @table.cards.count == 3 %>
-      <% @table.cards.each_with_index do |card, index| %>
-        <div id="board<%=index+1%>">
-          <%= image_tag card.pic%>
-        </div>
-      <% end %>
-    <% elsif @table.cards.count == 4 %>
-      <% @table.cards.each_with_index do |card, index| %>
-        <div id="board<%=index+1%>">
-          <%= image_tag card.pic %>
-        </div>
-      <% end %>
-     <% elsif @table.cards.count == 5 %>
-      <% @table.cards.each_with_index do |card, index| %>
-        <div id="board<%=index+1%>">
-          <%= image_tag card.pic %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render "board" %>
 
   <div id="state">
-    <p> Bet: <%= @table.bet %></p>
-    <p> Pot: <%= @table.pot %> </p>
+    Bet: <%= @table.bet %> <br>
+    Pot: <%= @table.pot %>
   </div>
 
   <div id="blinds">
@@ -54,4 +38,5 @@
 <%= button_to "Turn", table_path(@table.id, turn: :true), method: :patch %>
 <%= button_to "River", table_path(@table.id, river: :true), method: :patch %>
 <%= button_to "New Hand", table_path(@table.id, new_hand: :true), method: :patch %>
+<%= button_to "Showdown", table_path(@table.id, showdown: :true), method: :patch %>
 

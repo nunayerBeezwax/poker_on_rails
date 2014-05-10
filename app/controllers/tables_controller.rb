@@ -6,7 +6,7 @@ class TablesController < ApplicationController
     @table.bb = 50
     @table.sb = 25
     @table.save
-    9.times { |i| player = Player.new({:name => Faker::Name.name, :chips => 1000, :table_id => @table.id, :seat => i+1 })
+    9.times { |i| player = Player.new({:name => Faker::Name.first_name, :chips => 1000, :table_id => @table.id, :seat => i+1 })
     @table.players << player }
     @table.create_dealer!
     @table.dealer.create_deck!
@@ -51,8 +51,16 @@ class TablesController < ApplicationController
       @table.cards << @table.dealer.give_card
     end
 
+    if params[:showdown]
+      @dealer.showdown
+    end
+
     if params[:new_hand]
-      @table.players.each { |player| player.cards = [] }
+      @table.players.each do |player| 
+        player.cards = [] 
+        player.hand = '' 
+        player.save
+      end
       @table.cards = []
       @table.pot = 0
       @table.bet = 0
