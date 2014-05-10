@@ -33,6 +33,7 @@ class TablesController < ApplicationController
     if params[:preflop]
       @table.blinds_please
       @table.bet = @table.bb
+      @table.action = @table.players.find_by_seat((@table.button+3).to_s.split(//).map(&:to_i).inject(:+))
       @table.save
       @table.players.each do |player|
         until player.cards.count == 2 do

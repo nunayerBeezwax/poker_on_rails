@@ -3,7 +3,7 @@
   <% @table.players.sort.each_with_index do |player, index| %>
     <div class="boxed" id="player<%=index+1%>">
       <%= player.name %>
-      <% if player.hand != ''%>
+      <% if player.hand != nil && player.hand != '' %>
         <p><%= player.hand %></p>
       <% else %>
         <p><%= player.chips %></p>
