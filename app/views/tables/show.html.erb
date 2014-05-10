@@ -50,8 +50,7 @@
 
 </div>
 
-
-<%= button_to "Start Game", table_path(@table.id, preflop: :true), method: :patch %>
+<%= button_to "Deal 'em", table_path(@table.id, preflop: :true), method: :patch %>
 <%= button_to "Flop", table_path(@table.id, flop: :true), method: :patch %>
 <%= button_to "Turn", table_path(@table.id, turn: :true), method: :patch %>
 <%= button_to "River", table_path(@table.id, river: :true), method: :patch %>
