@@ -56,7 +56,14 @@ class TablesController < ApplicationController
       @table.cards = []
       @table.pot = 0
       @table.bet = 0
-      @table.dealer.deck.cards.each { |card| card.played = false }
+      @table.dealer.create_deck!
+      rank = %w{ 2 3 4 5 6 7 8 9 10 11 12 13 14 }
+      suit = %w{ C S H D }
+      suit.each do |suit|
+        rank.each do |rank|
+          @table.dealer.deck.cards << Card.new({:suit => suit, :rank => rank, :pic => "#{rank}#{suit}.png"})
+        end
+      end
       if @table.button + 1 < 10 
         @table.button += 1 
       else
