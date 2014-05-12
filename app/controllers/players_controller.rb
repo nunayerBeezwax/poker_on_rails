@@ -14,6 +14,10 @@ class PlayersController < ApplicationController
 			@player.save
 		end
 
+		if params[:decision]
+			@player.decision
+		end
+
 		@table.action_on_seat = (@table.action_on_seat+1).to_s.split(//).map(&:to_i).inject(:+)
 		@table.save
 

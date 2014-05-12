@@ -17,6 +17,7 @@
 
   <%= render "game_buttons" %>
   <% if @table.action_on_seat && @table.action_on_seat > 0 %>
+    <%= render "play" %>
     <%= render "fold" %>
     <%= render "call" %>
     <%= render "check" %>

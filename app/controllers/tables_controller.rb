@@ -42,7 +42,10 @@ class TablesController < ApplicationController
           player.cards << @table.dealer.give_card
         end
       end
-      @table.round_of_betting
+      ### if this is activated, pressing "Deal 'em" shows only 
+      ### hands deemed worthy of playing
+      ### other, temporary buttons added to watch the action happen
+      # @table.round_of_betting
     end
 
     if params[:flop]
