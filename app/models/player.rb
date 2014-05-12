@@ -22,8 +22,12 @@ class Player < ActiveRecord::Base
   end
 
   def decision
-    unless self.seat == 2 
+    if Brain.preflop(self.cards, 50) == "Fold"
       self.fold
+    elsif Brain.preflop(self.cards, 50) == "Call"
+      self.bet(50)
+    else
+      self.bet(150)
     end
   end
   
