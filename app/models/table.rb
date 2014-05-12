@@ -13,9 +13,12 @@ class Table < ActiveRecord::Base
   end
 
   def round_of_betting
-    @table = Table.find(self.id)
-    first_to_act = Player.find(@table.action_on_seat)
-    first_to_act.decision
-
+    if self.players.find_by_seat(self.action_on_seat).cards.count == 2
+      actor = self.players.find_by_seat(self.action_on_seat)
+      actor.decision
+      self.action_on_seat = (self.action_on_seat+1).to_s.split(//).map(&:to_i).inject(:+)
+      self.save
+      self.round_of_betting
+    end
   end
 end

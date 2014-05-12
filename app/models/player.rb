@@ -18,10 +18,13 @@ class Player < ActiveRecord::Base
 
   def fold
     self.cards = []
+    self.save
   end
 
   def decision
-    self.fold
+    unless self.seat == 2 
+      self.fold
+    end
   end
   
 end
