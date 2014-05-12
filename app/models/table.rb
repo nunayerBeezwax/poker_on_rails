@@ -11,4 +11,11 @@ class Table < ActiveRecord::Base
   	small_blind.bet(self.sb)
   	big_blind.bet(self.bb)
   end
+
+  def round_of_betting
+    @table = Table.find(self.id)
+    first_to_act = Player.find(@table.action_on_seat)
+    first_to_act.decision
+
+  end
 end

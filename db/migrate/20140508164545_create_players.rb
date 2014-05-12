@@ -6,6 +6,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :chips
       t.integer :seat
       t.string :hand
+      t.integer :imin, default: 0
     end
   end
 end

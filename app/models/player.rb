@@ -5,6 +5,7 @@ class Player < ActiveRecord::Base
   def bet(amount)
   	@table = Table.find(self.table_id)
   	self.chips -= amount.to_i
+    self.imin = amount.to_i
   	if @table.pot
   		@table.pot += amount.to_i
   	else
@@ -17,6 +18,10 @@ class Player < ActiveRecord::Base
 
   def fold
     self.cards = []
+  end
+
+  def decision
+    self.fold
   end
   
 end

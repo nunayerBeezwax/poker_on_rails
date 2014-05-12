@@ -30,6 +30,8 @@ class TablesController < ApplicationController
     @button = @table.button
     @pot = @table.pot
 
+    ### The course of one Hand
+
     if params[:preflop]
       @table.blinds_please
       @table.bet = @table.bb
@@ -40,6 +42,7 @@ class TablesController < ApplicationController
           player.cards << @table.dealer.give_card
         end
       end
+      @table.round_of_betting
     end
 
     if params[:flop]
@@ -59,10 +62,13 @@ class TablesController < ApplicationController
       @dealer.showdown
     end
 
+    ### New Hand Begins, Reset Table & Players
+
     if params[:new_hand]
       @table.players.each do |player| 
         player.cards = [] 
         player.hand = '' 
+        player.imin = 0 
         player.save
       end
 

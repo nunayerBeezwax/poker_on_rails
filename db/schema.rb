@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510182631) do
+ActiveRecord::Schema.define(version: 20140512044355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140510182631) do
     t.integer "card_id"
     t.integer "seat"
     t.string  "hand"
+    t.integer "imin",     default: 0
   end
 
   create_table "tables", force: true do |t|
